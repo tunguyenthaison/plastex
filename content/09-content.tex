@@ -6,7 +6,7 @@
     \item $z$ remains unchanged.
     \begin{equation*}
     \fbox{$
-    \qquad\hfill
+    \qquad
         \begin{cases}
             \begin{aligned}
                 x &= r\cos \theta \\
@@ -21,7 +21,7 @@
                 \frac{y}{x} &= \tan \theta .
             \end{aligned}
         \end{cases}
-        \hfill\qquad
+        \qquad
         $}
     \end{equation*}
     \begin{center}
@@ -41,14 +41,14 @@
 \begin{itemize}
     \item $(x,y,z)\mapsto (\rho, \theta,\phi)$, where basically we repeat the polar coordinate first, and the \emph{height} $z$ is tracked via the variable $\phi$, the angle with $Oz$. 
     Note that the order is sometime written as $(r,\phi, \theta)$. \textbf{Pay attention to the order!}
-    \item The relations, still introducing an extra variable $r$ as in polar coordinates (it will be very useful)
+    \item The relations, still introducing an extra variable $r$ as in polar coordinates (it will be very useful)\color{red}
     \begin{equation*}
     \fbox{$
-    \qquad\hfill
+    \qquad
         \begin{cases}
             \begin{aligned}
-                x &= (\rho \cos \phi) \cos \theta \\
-                y &= (\rho \cos \phi) \sin \theta \\
+                x &= (\rho \sin \phi) \cos \theta \\
+                y &= (\rho \sin \phi) \sin \theta \\
                 z &= \rho \cos \phi
             \end{aligned}
         \end{cases} \qquad 
@@ -60,12 +60,12 @@
                 \frac{r}{z} &= \tan \phi
             \end{aligned}
         \end{cases}, \qquad \theta \in  [0,2\pi], \phi\in [0,\pi]
-        \hfill\qquad
+        \qquad
         $}
     \end{equation*}
     \begin{center}
         \includegraphics[scale=0.7]{content/09-spherical.png}
-    \end{center}
+    \end{center}\color{black}
     \item If $\phi > \frac{\pi}{2}$ then $z<0$, the angle make $P$ lies below the $Oxy$-plane.
     
     \item \underline{\textbf{Example.}} Convert $(1,1,0)$ into spherical coordinate.
