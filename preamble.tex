@@ -1,0 +1,129 @@
+% Add support for mathematical equations.
+\usepackage{amsmath}
+
+
+
+
+% Add support for mathematical proof environment.
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Generate dummy text for testing.
+\usepackage{lipsum}
+
+% Use the typographical ruleset for the English language.
+\usepackage[english]{babel}
+
+% Nicer tables.
+\usepackage{booktabs}
+
+% Add support for bold mathematical symbols: $\bm{X}$.
+\usepackage{bm}
+
+% Add support for links (and urls in references).
+% Dont outline the links themselves.
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+   colorlinks = true,
+   linkcolor = {red},
+   citecolor = {blue},
+}
+
+% Add support for the degree symbol.
+\usepackage{gensymb}
+
+% Add support font shape definitions to use the Euler script symbols in math mode, we only need it if not using Euler math font
+\usepackage{eucal}
+
+% Set root folder for images.
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+% Set document margins.
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,headheight=2.5cm}
+
+% Add support for breaking the figure with \FloatBarrier.
+\usepackage[above,below,verbose,section]{placeins}
+
+% Add option for showing labels for equations.
+% \usepackage[notcite,notref]{showkeys}
+
+% Customize the font. Palatino with smallcap support.
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\linespread{1.25}
+% \usepackage[utopia]{mathdesign}
+
+% Add simple colorbox for theorems and lemmas (trouble with texlive2023basic, work on overleaf - 2024-01-12).
+% \usepackage[most]{tcolorbox}
+
+% Add simple box for minipage.
+\usepackage{boxedminipage}
+
+% Set numbering for Section 1., and Subsections 1.1, none after that.
+\setcounter{secnumdepth}{2}
+% \setcounter{tocdepth}{3}
+% \setcounter{equation}{0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Macros. 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+
+
+
+
+
+
+\newtheoremstyle{note}% <name>
+{10pt}% <Space above>
+{3pt}% <Space below>
+%{\upshape}% <Body font>
+{\itshape}% <Body font>
+%{\parindent}% <Indent amount>
+{0pt}% <Indent amount>
+{\bfseries}% <Theorem head font>
+{.}% <Punctuation after theorem head>
+{0.5em}% <Space after theorem headi>
+{}% <Theorem head spec (can be left empty, meaning `normal')>
+
+\theoremstyle{note}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{rem}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+
+
+% making the description with hyperlink
+\usepackage{enumitem}
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    #2%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}
+\makeatother

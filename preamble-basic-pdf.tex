@@ -15,12 +15,6 @@
     rmargin=2.5cm,
     headheight=3cm}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{example}{Example}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{remark}[theorem]{Remark}
-
 
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\PGL}{PGL}
@@ -31,3 +25,28 @@
 \newcommand{\Gm}{\mathbf{G}_m}
 \newcommand{\Gtilde}{{\tilde{G}}}
 \newcommand{\Ttilde}{{\tilde{T}}}
+
+\newtheoremstyle{note}% <name>
+{10pt}% <Space above>
+{3pt}% <Space below>
+%{\upshape}% <Body font>
+{\itshape}% <Body font>
+%{\parindent}% <Indent amount>
+{0pt}% <Indent amount>
+{\bfseries}% <Theorem head font>
+{.}% <Punctuation after theorem head>
+{0.5em}% <Space after theorem headi>
+{}% <Theorem head spec (can be left empty, meaning `normal')>
+
+\theoremstyle{note}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{rem}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{example}{Example}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
