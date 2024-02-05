@@ -1,0 +1,113 @@
+\section{Tangent planes}
+% \begin{definition}
+% \begin{itemize}
+%     \item The tangent plane to the surface $z=f(x,y)$ at the point $P(x_0,y_0,z_0)$ is defined to be the plane 
+% \end{itemize}    
+% \end{definition}
+% \clearpage
+
+\begin{example} Find equation of the tangent plane of the surface $z=f(x,y) = 3y^2-2x^2+x$ at the point $(2,-1,3)$.
+\end{example}
+\begin{proof} \quad 
+\begin{itemize}
+    \item Step 1. We write the general form
+    \begin{equation*}
+        z - z_0 = f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0).
+    \end{equation*}
+    \item Step 2. Plug in $(x_0,y_0,z_0) = (2,-1,-3)$
+    \begin{align*}
+         z - (-3) &= f_x(2,-1)(x-2) + f_y(2,-1)(y-(-1)).  \\
+         z + 3 &= f_x(2,-1)(x-2) + f_y(2,-1)(y+1). 
+    \end{align*}
+    \item Step 3. Compute the partial derivatives
+    \begin{align*}
+        f_x(x,y) = -4x+1, \qquad f_x(2,-1) = -7\\
+        f_y(x,y) = 6y, \qquad f_y(2,-1) = -6.
+    \end{align*}
+    \item Step 4. Final answer
+    \begin{equation*}
+        z + 3 = -7(x-2) - 6 (y+1).
+    \end{equation*}
+\end{itemize}
+\end{proof}
+\clearpage 
+
+\begin{example} Find the linear approximation of $f(x,y) = \frac{2x+3}{4y+1}$ at $(0,0)$. Use it to approximate $f(0.1, -0.2)$ and $f(0.01, -0.02)$.
+\end{example}
+\begin{proof} Find the tangent plane at $(x_0,y_0) = (0,0)$ with $z_0 = f(x_0,y_0) = 3$. 
+    \begin{itemize}
+    \item Step 1. We write the general form
+    \begin{equation*}
+        z - z_0 = f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0).
+    \end{equation*}
+    \item Step 2. Plug in $(x_0,y_0,z_0) = (0,0,3)$
+    \begin{align*}
+         z - 3 &= f_x(0,0)(x-0) + f_y(0,0)(y-0.  \\
+         z - 3 &= f_x(2,-1)x + f_y(2,-1)y
+    \end{align*}
+    \item Step 3. Compute the partial derivatives
+    \begin{align*}
+        f_x(x,y) = \frac{2}{4y+1}, \qquad f_x(0,0) = 2\\
+        f_y(x,y) = (2x+3)\frac{-4}{(4y+1)^2}, \qquad f_y(0,0) = -12
+    \end{align*}
+    \item Step 4. The tangent plane
+    \begin{equation*}
+        z + 3 = 2x -12 y
+    \end{equation*}
+    \item Step 5. The linear approximation
+    \begin{equation*}
+        L(x,y) = 2x -12 y - 3
+    \end{equation*}
+    \item Now plug in the value
+    \begin{align*}
+         L(0.1, -0.2)  = 5.6\, \qquad \text{while the true value}\qquad f(0.1, -0.2) = 16 \\
+    \end{align*}
+    Here the change in $x,y$ are $0.1$ and $-0.2$.  Now
+    \begin{equation*}
+         L(0.01, -0.02)  = 3.26\, \qquad \text{while the true value}\qquad f(0.01, -0.02) = 3.28
+    \end{equation*}
+    Here the change in $x,y$ are $0.01$ and $-0.02$. 
+\end{itemize}
+We see that if the changes in $x$ and $y$ are small then the approximation is good!    
+\end{proof}
+
+\begin{example} Consider $z = f(x,y) = x^2+3xy-y^2$. Find $dz$. If $x$ changes from $2\to 2.05$ and $y$ changes from $3\to 2.96$, compare the value of $\Delta z$ (true differences) and $dz$ (the total differential).
+\end{example}
+\begin{proof}\quad 
+    \begin{itemize}
+        \item Step 1. Here $(x_0,y_0) = (2,3)$ and $dx = 0.05$, $dy = -0.04$.
+        \item Step 2. Write the total differential formula $dz = f_x(2,3)dx + f_y(2,3)dy$.
+        \item Step 3. Compute the partial derivatives
+        \begin{align*}
+            f_x(x,y) = 2x+3y, \qquad f_x(2,3) = 13\\
+            f_y(x,y) =3x-2y, \qquad f_y(2,3) = 0
+    \end{align*}
+        \item Step 4. Plug in to the formula $dz$
+        \begin{equation*}
+            dz = 13 \times (0.05) + 0 \times (-0.04) = 0.65
+        \end{equation*}
+        \item Step 5. The true value 
+        \begin{equation*}
+        \begin{cases}
+            f(2.05, -2.96) = (2.05)^2 - 3\times (2.05)\times (-2.96) - (-2.96)^2 = 13.6449\\
+            f(2,3) = 2^2 - 3\times \times 3 - 3^2 = 13
+        \end{cases} \quad \Longrightarrow\quad \Delta z = 0.06449
+        \end{equation*}
+        We see that $\Delta z \approx dz$, but $dz$ is much easier to compute.
+    \end{itemize}
+\end{proof}
+
+\clearpage
+
+\begin{example} The dimensions of a box are measure to be $10 cm, 5cm, 8cm$. If each measurement is correct within $0.2cm$, approximate the largest possible error when the volume of the box is calculated from these measurements.
+\end{example}
+\begin{proof} We have $V(x,y,z) = xyz$, thus
+\begin{equation*}
+\begin{aligned}
+    dV &= V_xdx + V_ydy + V_zdz \\
+        &= yz dx + xz dy + xy dz \\
+        &= 0.2(yz + xz + xy) = 0.2 (10\times 5 + t\times 8 + 8\times 10) = 170\times 0.2 =34 cm^3
+\end{aligned}
+\end{equation*}
+The error is at most $34cm^3$. 
+\end{proof}
