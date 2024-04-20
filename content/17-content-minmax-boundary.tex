@@ -1,0 +1,152 @@
+
+% Lecture 17
+\setcounter{section}{16}
+\section{Maximum and Minimum of functions on a domain with boundary}
+
+Given $f(x,y):D\subset \mathbb{R}^2\to \mathbb{R}$. To find max/min on $D$ we follows the following steps (mostly from the previous lecture). 
+\begin{enumerate}
+    \item Find critical points (points where $\nabla f(x,y) = (0,0)$ or it does not exists)
+    \begin{equation*}
+        \text{Solve for}\;\nabla f(x,y) = 0.
+    \end{equation*}
+    \item Classify local max/min or saddle point (\emph{This step can be skipped if we only care about absolute max/min of the function}) 
+    \begin{equation*}
+        D = \left|\begin{array}{cc}
+             f_{xx} & f_{xy}  \\
+             f_{yx} & f_{yy} 
+        \end{array}\right| = f_{xx}f_{yy} - f_{xy}^2 \qquad 
+        \Longrightarrow\qquad 
+        \begin{cases}
+            D < 0: &\text{saddle point}    \\
+            D = 0: &\text{inconclusive}    \\
+            D > 0 
+            & 
+            \begin{cases}
+            f_{xx} > 0 &\text{local min}\\
+            f_{xx} < 0 &\text{local max}.
+            \end{cases}
+        \end{cases}
+    \end{equation*}
+    \item Find max/min on the boundary. 
+    \begin{enumerate}
+        \item Draw a graph to identify parts of the boundary.
+        \item On each part, write the relation between $x$ and $y$, use that to simplify $f(x,y)$ into a function of one variable $g(x)$ or $g(y)$, together with the domain of $x$ and $y$ correspondingly.
+        \item Use Cal 2 to find max/min of this one-variable function. 
+    \end{enumerate}
+    \item Compare all the max/min values found in Step 3 and the values of all critical points in Step 1. The biggest is the absolute max, the smallest is the absolute min.
+\end{enumerate}
+
+\paragraph{Notes.} When the question is finding absolute maximum or absolute minimum, we can ignore step 2 completely. 
+
+\clearpage
+
+\begin{example}
+    Find the absolute max/min values for $f(x,y) = x+y$ on the region $D$ given by the picture below below.
+    \begin{equation*}
+        D = \{(x,y)\in \mathbb{R}^2: x^2\leq y\leq 3\}.
+    \end{equation*}
+\end{example}
+
+\begin{center}
+    \begin{tikzpicture}[
+    declare function={
+        a=-3;
+        b=3;
+        f(\x)=\x^2-1;
+        g(\x)=3;
+        }]
+    \pgfmathsetmacro{\sqrtofthree}{sqrt(3)} % Calculate sqrt(3)
+    \begin{axis}[
+        axis lines=middle,
+        axis on top,
+        xlabel=$x$,
+        ylabel=$y$,
+        xmin=-4,xmax=4,ymin=-2,ymax=4,
+        ytick={-1,0,1,2,3},
+        xtick={-4,-3,-2,-1,0,1,2,3,4},
+        % xticklabels={$a$,$1$,$b$}, 
+        % https://tex.stackexchange.com/a/68407/121799
+        every axis x label/.style={at={(current axis.right of origin)},anchor=north west},
+        every axis y label/.style={at={(current axis.above origin)},anchor=north east}]
+        \addplot[name path=A,blue,thick,domain=-4:4,smooth] {f(x)};
+        \addplot[name path=C,blue,thick,domain=-3:3,smooth] {g(x)};
+        \path[name path=B] (\pgfkeysvalueof{/pgfplots/xmin},0) -- (\pgfkeysvalueof{/pgfplots/xmax},0);
+      \addplot [gray!30] fill between [
+            of=A and C,
+            % soft clip={domain= -\sqrtofthree:\sqrtofthree},
+            soft clip={domain= -2:2},
+        ];
+        \addplot [gray] fill between [
+            of=A and C,soft clip={domain=1:b},
+        ];
+        \path 
+        ({-1},{3+0.3}) node{$D_1$}
+        ({-1.8},{1}) node{$D_2$}
+        ({1},{1.5}) node{$D$};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{proof}\quad 
+\begin{enumerate}
+    \item Finding the intersection of $y=x^2-1$ and $y=3$, we have $x^2-1 = 3$, thus $x^2 = 4$, hence $x=2$ or $x=-2$.
+    \item Critical points: $\nabla f(x,y) = (1,1)$. Solving for $\nabla f(x,y) = (0,0)$ does not yield any solution as      $(1,1) = (0,0)$
+    has no solution $(x,y)$. We conclude that there is no critical point. 
+    \item Find max/min on the boundary: there are two parts of the boundary:
+    \begin{itemize}
+        \item On $D_1$, we have $y=-3$ and $-2\leq x\leq 2$, and 
+        \begin{align*}
+            f(x,y) = x+y = x+3 \qquad \Longrightarrow\qquad \begin{cases}
+                \text{max}\; 5\;\text{at}\;(2,3)\\
+                \text{min}\; 1\;\text{at}\;(-2,3).
+            \end{cases}
+        \end{align*}
+        \item On $D_2$, we have $y=x^2-1$ and $-2\leq x\leq 2$, and 
+        \begin{align*}
+            f(x,y) = x+ y = x+ x^2-1 = g(x).
+        \end{align*}
+        This is now a separate question: \fbox{$\displaystyle
+            \text{Find max/min}\;g(x) = x^2+x-1\;\text{over}\;x\in [-2,2].
+            $}
+        \begin{itemize}
+            \item $g'(x) = 0$ iff $2x+1 = 0$, iff $x=-\frac{1}{2}$. The corresponding $y = x^2-1 = \left(-\frac{1}{2}\right)^2-1 = -\frac{3}{4}$.
+            
+            We compute $g\left(-\frac{1}{2}\right) = \left(-\frac{1}{2}\right)^2 + \left(- \frac{1}{2}\right) - 1 = -\frac{5}{4}$, and $(x,y) = \left(-\frac{1}{2}, -\frac{3}{4}\right)$. 
+            \item If $x=-2$ then $y=3$, 
+            $g(-2) = (-2)^2+(-2)-1 = 1$, at $(-2,3)$.
+            \item If $x=2$ then $y=3$, 
+            $g(2) = (2)^2+(2)-1 = 5$, at $(2,3)$.
+        \end{itemize}
+    \end{itemize}
+    \item Comparing all points, we conclude 
+    \begin{itemize}
+        \item Absolute max $=5$ at $(2,3)$.
+        \item Absolute min $=-\frac{5}{4}$ at $\left(-\frac{1}{2}, -\frac{3}{4}\right)$.
+    \end{itemize}
+\end{enumerate}
+\end{proof}
+
+
+\clearpage
+\begin{example}
+    Find the absolute max/min values for $f(x,y) =x^2-2xy+2y$ on the region $D$ given by the picture below below.
+    \begin{equation*}
+        D = \{(x,y)\in \mathbb{R}^2: 0\leq x\leq 3, 0\leq y\leq 2\}.
+    \end{equation*}
+\end{example}
+
+\clearpage
+
+\begin{example}
+    Find the absolute max/min values for $f(x,y) =2+2x+2y-x^2-y^2$ on the triangular region in the first quadrant bounded by and including $y=9-x$.
+\end{example}
+
+
+\clearpage
+\begin{example} Let $f(x,y)=2x^2-y^2+6y$ on the disk $D$ given by $x^2+y^2\leq 16$.
+    \begin{itemize}
+        \item[(a)] Find all critical points of $f$.
+        % \item[(b)] Find the function values of $f$ on the boundary of $D$.
+        \item[(b)] Find the absolute max/min of $f$ on $D$. 
+    \end{itemize}
+\end{example}

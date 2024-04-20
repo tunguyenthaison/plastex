@@ -1,0 +1,251 @@
+
+\noindent 
+Let 
+\begin{equation*}
+    \V(\x) = 2-\sin(2\pi x) - \sin(2\pi y), \qquad \x = (x,y)\in \T^2.
+\end{equation*}
+We are interested in estimating, for $\mu>0$ and $\gamma > 0$ the Sobolev norm $H^{2+s}(\T^2)$ of the function
+\begin{equation*}
+    \K_\mu(\x) = (\mu + \V(\x))^{{-1/2}}, \qquad \x\in \T^2.
+\end{equation*}
+
+\section{Evaluate the $3rd$-derivative}
+We want to compute 
+\begin{align*}
+    \partial^2_{x_ix_j} \K_\mu(\x) 
+    &= \frac{3\gamma^2}{4}\left(\mu+\V(\x)^\gamma\right)^{-5/2} 
+        \left(\gamma \V^{\gamma-1} \V_{x_i}\right)
+        \left(\gamma \V^{\gamma-1} \V_{x_j}\right) \\
+    & -\frac{1}{2}(\mu + \V^\gamma)^{-3/2} 
+        \left(
+            \gamma(\gamma-1)\V^{\gamma-2}
+            \V_{x_i}\V_{x_j}
+            + 
+            \gamma\V^{\gamma-1} \V_{x_ix_j}
+        \right).
+\end{align*}
+We have 
+\begin{align*}
+    \partial_{x_k}\Big(\partial^2_{x_ix_j} \K_\mu(\x) \Big) = I_1 + I_2 + I_3 + I_4,
+\end{align*}
+where
+\begin{align*}
+    I_1 &= -\frac{15\gamma^2}{8} (\mu+\V^\gamma)^{-7/2} \prod_{i,j,k} \left(\gamma\V^{\gamma-1}\V_{x_i}\right) \\
+    I_2 &= \frac{3\gamma^2}{4}(\mu+\V^\gamma)^{-5/2} \frac{\partial}{\partial_{x_k}} 
+    \left(\gamma\V^{\gamma-1}\V_{x_i}\right)
+    \left(\gamma\V^{\gamma-1}\V_{x_j}\right)\\
+    I_3 &= \frac{3}{4}(\mu+\V^\gamma)^{-5/2} 
+        \left( 
+            \gamma\V^{\gamma-1}\V_{x_k} 
+        \right)
+        \left(
+            \gamma(\gamma-1)\V^{\gamma-2}\V_{x_i}\V_{x_j}
+            + 
+            \gamma\V^{\gamma-1} \V_{x_ix_j}
+        \right) \\
+    I_4 &= -\frac{1}{2}(\mu+\V^\gamma)^{-3/2} \frac{\partial}{\partial x_k}
+    \left(
+        \gamma(\gamma-1)\V^{\gamma-2}
+        \V_{x_i}\V_{x_j}
+        + 
+        \gamma\V^{\gamma-1} \partial^2_{x_ix_j}\V
+    \right). 
+\end{align*}
+
+We only need to differentiate $I_2$ and $I_4$. 
+\subsection{Compute $I_1$} We have
+\begin{align*}
+\fbox{$\displaystyle
+    I_1 \leq \frac
+    {
+        |\x-\x_0|^{6\gamma-3}
+    }
+    {
+        (\mu+|\x-\x_0|^{2\gamma})^{7/2}
+    }
+$}.
+\end{align*}
+
+\subsection{Compute $I_2$}
+We have
+\begin{align*}
+    &\frac{\partial}{\partial_{x_k}} 
+    \left(\gamma\V^{\gamma-1}\V_{x_i}\right)
+    \left(\gamma\V^{\gamma-1}\V_{x_j}\right) = \\
+    & \qquad 
+        \Big[ 
+        \gamma(\gamma-1)\V^{\gamma-2} \V _{x_i}\V_{x_k}
+        + 
+        \gamma  \V^{\gamma-1} \V_{x_ix_k}
+        \Big] \left(\gamma\V^{\gamma-1}\V_{x_j}\right)  
+        \color{red} 
+            \sim \left(|\x-\x_0|^{2\gamma-2} + |\x-\x_0|^{2\gamma-2}\right)|\x-\x_0|^{2\gamma-1}
+        \color{black} \\
+    & \qquad \qquad + \\    
+    & \qquad  
+        \Big[ 
+        \gamma(\gamma-1)\V^{\gamma-2} \V_{x_j}\V_{x_k}
+        + 
+        \gamma  \V^{\gamma-1}\V_{x_jx_k}
+        \Big] \left(\gamma\V^{\gamma-1}\V_{x_i}\right). 
+\end{align*}
+Therefore
+\begin{align*}
+    I_2 &= \frac{3\gamma^2}{4}(\mu+\V^\gamma)^{-5/2} \\
+    & 
+    \left(
+        \Big[ 
+        \gamma(\gamma-1)\V^{\gamma-2}\V_{x_i}
+        + 
+        \gamma  \V^{\gamma-1} \V_{x_ix_k}
+        \Big] 
+        \left(\gamma\V^{\gamma-1}\V_{x_j}\right)
+        + 
+        \Big[ 
+        \gamma(\gamma-1)\V^{\gamma-2} \V _{x_j}
+        + 
+        \gamma  \V^{\gamma-1} \V_{x_jx_k}
+        \Big] \left(\gamma\V^{\gamma-1}\V_{x_i}\right) 
+    \right)
+\end{align*}
+And thus
+\begin{align*}
+    I_2 \leq 
+    \frac{
+        |\x-\x_0|^{2\gamma-2} \cdot |\x-\x_0|^{2\gamma-1} 
+    }{(\mu+|\x-\x_0|^{2\gamma})^{5/2}} 
+    = 
+\fbox{$ \displaystyle 
+    \frac{
+        |\x-\x_0|^{4\gamma-3}
+    }
+    {
+        (\mu+|\x-\x_0|^{2\gamma})^{5/2}
+    }
+$}
+\end{align*}
+\subsection{Compute $I_3$}
+We have
+\begin{align*}
+    I_3 \leq 
+    \frac
+    {
+        |\x-\x_0|^{2\gamma-1} \cdot 
+        \Big(
+            |\x-\x_0|^{2\gamma-2} + |\x-\x_0|^{2\gamma-2}
+        \Big)
+    }
+    {   
+        (\mu+|\x-\x_0|^{2\gamma})^{5/2}
+    } 
+    = 
+    \fbox{$ \displaystyle
+    \frac
+    {
+        |\x-\x_0|^{4\gamma-3}
+    }
+    {
+        (\mu+|\x-\x_0|^{2\gamma})^{5/2}
+    }
+    $}. 
+\end{align*}
+\subsection{Compute $I_4$} We have
+\begin{align*}
+    I_4 &= -\frac{1}{2}(\mu+\V^\gamma)^{-3/2} 
+    \left(
+        \gamma(\gamma-1) \sum_{i,j,k} \V^{\gamma-2} \V_{x_ix_j}\V_{x_k} 
+        +
+        \gamma \V^{\gamma-1} \V_{x_ix_jx_k} 
+        +
+        \gamma(\gamma-1)(\gamma-2)\V^{\gamma-3} \V_{x_i}\V_{x_j}\V_{x_k}
+    \right).
+\end{align*}
+Therefore 
+\begin{align*}
+    I_4 \leq \frac
+            {
+                |\x-\x_0|^{2\gamma-3} + |\x-\x_0|^{2\gamma-1} + |\x-\x_0|^{2\gamma-3}
+            }
+            {
+                (\mu+|\x-\x_0|^{2\gamma})^{3/2}
+            }
+            \leq 
+            \fbox{$\displaystyle
+                \frac{|\x-\x_0|^{2\gamma-3}}
+                {(\mu+|\x-\x_0|^{2\gamma})^{3/2}}
+                + 
+                \frac{|\x-\x_0|^{2\gamma-1}}
+                {(\mu+|\x-\x_0|^{2\gamma})^{3/2}}
+            $}. 
+\end{align*}
+\subsection{Putting everything together}
+We obtain
+\begin{align*}
+    I_1+I_2+I_3+I_4 \leq  
+                \frac
+                {
+                    |\x-\x_0|^{6\gamma-3}
+                }
+                {
+                    (\mu+|\x-\x_0|^{2\gamma})^{7/2}
+                }
+    + 
+                 \frac
+                {
+                    |\x-\x_0|^{4\gamma-3}
+                }
+                {
+                    (\mu+|\x-\x_0|^{2\gamma})^{5/2}
+                }
+    + 
+    \frac
+                {
+                    |\x-\x_0|^{2\gamma-3}
+                }
+                {
+                    (\mu+|\x-\x_0|^{2\gamma})^{3/2}
+                }
+    + 
+    \frac
+                {
+                    |\x-\x_0|^{2\gamma-1}
+                }
+                {
+                    (\mu+|\x-\x_0|^{2\gamma})^{3/2}.
+                }
+\end{align*}
+Therefore, we have
+\begin{align*}
+    &\int_{\T^2} |D^3\K_\mu(\x)|^2\;d\x \\
+    &\qquad 
+    \leq C
+    \left(
+        1 
+        + 
+        \int_0^1 \frac{r^{12\gamma-5}}{(\mu+r^{2\gamma})^7}\;dr 
+        + 
+        \int_0^1 \frac{r^{8\gamma-5}}{(\mu+r^{2\gamma})^5}\;dr 
+        +
+        \int_0^1 \frac{r^{4\gamma-5}}{(\mu+r^{2\gamma})^3}\;dr 
+        +
+        \int_0^1 \frac{r^{4\gamma-1}}{(\mu+r^{2\gamma})^3}\;dr 
+    \right)\\
+    &\qquad 
+    \leq C 
+    \left(
+        1 
+        + 
+        \mu^{-1-\frac{2}{\gamma}}\int_0^{\mu^{-\frac{1}{2\gamma}}} \frac{s^{12\gamma-5}\;ds}{(1+s^{2\gamma})^7}
+        + 
+        \mu^{-1-\frac{2}{\gamma}}\int_0^{\mu^{-\frac{1}{2\gamma}}} \frac{s^{8\gamma-5}\;ds}{(1+s^{2\gamma})^5} 
+        + 
+        \mu^{-1-\frac{2}{\gamma}}\int_0^{\mu^{-\frac{1}{2\gamma}}} \frac{s^{4\gamma-5}\;ds}{(1+s^{2\gamma})^3} 
+        \right. \\
+    &\qquad \qquad\qquad\qquad \qquad\qquad 
+     \qquad \qquad\qquad\qquad \qquad\qquad\qquad
+        \left. 
+        + 
+        \mu^{-1}\int_0^{\mu^{-\frac{1}{2\gamma}}} \frac{s^{4\gamma-1}\;ds}{(1+s^{2\gamma})^3} 
+    \right) \\
+    &\qquad \leq C\left(1 + \mu^{-1-\frac{2}{\gamma}} + \mu^{-1}\right).
+\end{align*}

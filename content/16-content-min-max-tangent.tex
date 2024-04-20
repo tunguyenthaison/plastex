@@ -1,0 +1,110 @@
+% Lecture 16
+\setcounter{section}{15}
+\section{Lecture 16 - Tangent plane review and min/max of functions with several variables}
+
+\subsection{Tangent plane revisited}
+Given a surface with equation $F(x,y,z) = 0$, think of $x^2+\frac{y^2}{9}+\frac{z^2}{9}=1$ for example. 
+\paragraph{Question.} Given a point $P_0(x_0,y_0,z_0)$ (think of $\left(\frac{1}{3},2,2\right)$ for example) that lies on the surface, find the tangent plane to the surface at the point $P_0$. 
+
+\paragraph{Note.} To answer this question, we need to find a normal vector to the surface at $P_0$.
+
+\paragraph{Method 1.} 
+\begin{enumerate}
+    \item Parametrize the surface by $\textbf{r}(u,v)$.
+    \item Then solve for $(u_0,v_0)$ that corresponds to $P_0(x_0,y_0,z_0)$.
+    \item Compute the normal vector by $\textbf{n} = \textbf{r}_u\times \textbf{r}_v$, let's say it is $(a,b,c)$.
+    \item The tangent plane is $a(x-x_0)+b(y-y_0)+c(z-z_0) = 0$.
+\end{enumerate}
+
+\paragraph{Method 2.} 
+\begin{enumerate}
+    \item The normal is given by $\nabla F(x_0,y_0,z_0) = (F_x,F_y,F_z) = (a,b,c)$.
+    \item The tangent plane is $a(x-x_0)+b(y-y_0)+c(z-z_0) = 0$.
+\end{enumerate}
+The second method is based on the fact that, if $\textbf{r}(t)=(x(t),y(t),z(t))$ is a curve in the surface passing through $P_0$, then 
+\begin{equation*}
+    F(x(t),y(t),z(t)) = 0 \qquad \Longrightarrow\qquad \frac{d}{dt}F(x(t),y(t),z(t)) = 0
+\end{equation*}
+Therefore 
+\begin{equation*}
+    (F_x,F_y,F_z)\cdot (x'(t),y'(t),z'(t)) = 0.  
+\end{equation*}
+Here $\textbf{r}'(t) = (x'(t),y'(t),z'(t))$ is a tangent vector to the curve, thus belongs to the tangent plane at $P_0$. In other words, $\nabla F$ is the normal vector to the tangent plane at $P_0$.
+
+\begin{proof}[Proof using method 1] We can do
+\begin{equation*}
+    \begin{cases}
+        x = \sin \phi \cos \theta \\
+        \frac{y}{3} = \sin \phi \sin \theta \\
+        \frac{z}{3} = \cos \phi
+    \end{cases}
+\end{equation*}
+In other words,
+\begin{equation*}
+    r(\phi, \theta) = (\sin \phi \cos \theta , 3\sin \phi \sin \theta, 3\cos\phi).
+\end{equation*}
+To solve for $(\phi,\theta)$ at the point $P_0\left(\frac{1}{3}, 2,2\right)$ we solve
+\begin{equation*}
+    \begin{cases}
+        \sin \phi\cos \theta &= \frac{1}{3}\\
+        \sin \phi\sin \theta &= \frac{2}{3}\\
+        \cos \phi &= \frac{2}{3}
+    \end{cases}\qquad\Longrightarrow\qquad 
+    \begin{cases}
+    \sin\phi = \frac{\sqrt{5}}{3}    \\
+    \cos\theta = \frac{1}{\sqrt{5}}\\
+    \sin\theta = \frac{2}{\sqrt{5}}
+    \end{cases}
+\end{equation*}
+We have 
+\begin{equation*}
+\begin{aligned}
+    \textbf{r}_\phi &= (\cos \phi \cos\theta, 3\cos\phi\sin\theta, -3\sin\phi)  \\
+    \textbf{r}_\theta &= (-\sin \phi \sin\theta, 3\sin\phi\cos\theta, 0)  \\
+\end{aligned} 
+\end{equation*}
+We compute the normal vector
+\begin{equation*}
+\begin{aligned}
+    \textbf{n} 
+    &= 
+    \left|
+    \begin{array}{ccc}
+         i & j & k  \\
+         \cos \phi \cos\theta &  3\cos\phi\sin\theta & -3\sin\phi\\
+         -\sin \phi \sin\theta & 3\sin\phi\cos\theta & 0
+    \end{array}
+    \right|=\Big(9\sin^2\phi\cos\theta, 3\sin^2\phi\sin \theta, 3\sin\phi\cos\phi\Big)\\
+    &= \left(9\times \frac{5}{9}\times \frac{1}{\sqrt{5}}, 3\times \frac{5}{9} \times \frac{2}{\sqrt{5}}, 3 \times \frac{\sqrt{5}}{3}\times \frac{2}{3}\right) 
+    = \left(\sqrt{5}, \frac{2\sqrt{5}}{3}, \frac{2\sqrt{5}}{3}\right).
+\end{aligned}
+\end{equation*}
+We can simplify by choosing
+\begin{equation*}
+    \textbf{n} = \left(1,\frac{2}{3}, \frac{2}{2}\right)
+\end{equation*}
+and the tangent plane at $P\left(\frac{1}{3}, 2,2\right)$ is
+\begin{equation*}
+    \fbox{$\displaystyle
+    \left(x-\frac{1}{3}\right) + \frac{2}{3} \left(y-2\right) + \frac{2}{3} \left(z-2\right) = 0.
+    $}
+\end{equation*}
+\end{proof}
+
+\begin{proof}[Proof using method 2] We have
+\begin{equation*}
+    \nabla F(x,y,z) = \left(2x, \frac{2y}{9}, \frac{2z}{9}\right) \qquad\Longrightarrow\qquad \textbf{n} = \nabla F\left(\frac{1}{3}, 2,2\right) = \left(\frac{2}{3}, \frac{4}{9},\frac{4}{9}\right). 
+\end{equation*}
+We can choose the parallel vector
+\begin{equation*}
+    \textbf{n} = \left(1, \frac{2}{3}, \frac{2}{3}\right)
+\end{equation*}
+and thus at $P\left(\frac{1}{3}, 2,2\right)$ we get the tangent plane
+\begin{equation*}
+    \fbox{$\displaystyle
+    \left(x-\frac{1}{3}\right) + \frac{2}{3} \left(y-2\right) + \frac{2}{3} \left(z-2\right) = 0.
+    $}
+\end{equation*}
+\end{proof}
+
+\subsection{Critical points, local min, local max and saddle points}

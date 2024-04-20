@@ -1,0 +1,151 @@
+
+\setcounter{section}{17}
+\section{Lagrange multipliers}
+To find max/min of $f(x,y,z)$ with a given constraint $g(x,y,z)=0$. 
+\begin{enumerate}
+    \item We find solutions for $(x,y,z)$ and any possible $\lambda$ that satisfy
+    \begin{equation*}
+        \begin{cases}
+        \begin{aligned}
+            \nabla f(x,y,z) &= \lambda \nabla g(x,y,z) \\
+                   g(x,y,z) &= 0.
+        \end{aligned}
+        \end{cases}
+    \end{equation*}
+    \item Among all $(x,y,z)$ we found, find the biggest or smallest values of $f(x,y,z)$. They are potential absolute max/min of $f$ given the constraint $g$.
+\end{enumerate}
+
+\begin{example} Find max/min $f(x,y) = x^2+y^2$ subjected to $xy=1$. 
+\end{example}
+\begin{proof} Here $f(x,y) = x^2+y^2$ and $g(x,y) = xy-1$. 
+\begin{equation*}
+    \begin{cases}
+        \begin{aligned}
+            \nabla f(x,y) &= \lambda \nabla g(x,y)\\
+            g(x,y) &= 0
+        \end{aligned}
+    \end{cases} \qquad\Longrightarrow\qquad 
+    \begin{cases}
+        \begin{aligned}
+            (2x, 2y) &= \lambda(y,x)\\
+            xy&=1
+        \end{aligned}
+    \end{cases} \qquad\Longrightarrow\qquad \begin{cases}
+        2x&=\lambda y\\
+        2y&=\lambda x\\
+        xy &= 1
+    \end{cases}
+\end{equation*}
+If we multiply the two equations together side by side, then
+\begin{equation*}
+    4xy = \lambda^2 xy \qquad\Longrightarrow\qquad \lambda^2 = 4.
+\end{equation*}
+\begin{itemize}
+    \item If $\lambda=2$ then $x=y$ and $xy=1$, thus $(x,y)=(1,1)$ or $(-1,-1)$.
+    \item If $\lambda=-2$ then $x=-y$, then $-x^2=1$ has no solution.
+\end{itemize}
+We conclude that the minimum of $f$ is $2$, at $(1,1)$ or $(-1,-1)$. Here $f$ has no max since if we choose 
+\begin{equation*}
+    (x,y) = \left(n,\frac{1}{n}\right) \qquad\Longrightarrow\qquad f(x,y) = n^2+\frac{1}{n^2} \geq n^2 \to \infty
+\end{equation*}
+if we let $n\to \infty$.
+\end{proof}
+
+\begin{example}  Find max/min $f(x,y) = x^2+2y^2$ subjected to $x^2+y^2=1$. 
+\end{example}
+
+\begin{proof} Here $f(x,y) = x^2+2y^2$ and $g(x,y) = x^2+y^2$. 
+\begin{equation*}
+    \begin{cases}
+        \begin{aligned}
+            \nabla f(x,y) &= \lambda \nabla g(x,y)\\
+            g(x,y) &= 0
+        \end{aligned}
+    \end{cases} \qquad\Longrightarrow\qquad 
+    \begin{cases}
+        \begin{aligned}
+            (2x, 4y) &= \lambda(2x,2y)\\
+            x^2+y^2&=1
+        \end{aligned}
+    \end{cases} \qquad\Longrightarrow\qquad \begin{cases}
+    \begin{aligned}
+        2x&=\lambda 2x\\
+        4y&=\lambda 2y\\
+        x^2+y^2&=1
+        \end{aligned}
+    \end{cases}
+\end{equation*}
+Look at the first equation, we have $2x(1-\lambda) = 0$. 
+\begin{itemize}
+    \item If $x=0$ then $y^2=1$, thus $(x,y) = (0,1), (0,-1)$.
+    \item If $x\neq 0$ then $\lambda = 1$, then the second equation reads $4y = 2y$, thus $y=0$ and hence $x^2=1$, thus $(x,y)=(1,0), (-1,0)$.
+\end{itemize}
+Comparing the values, we have $f$ is max $2$ at $(0,1)$ or $(0,-1$, and $f$ is min $1$ at $(1,0)$ or $(-1,0)$.
+\end{proof}
+
+\begin{example} A rectangular box without a lid is to be made from $12\;\mathrm{m}^2$ of cardboard. Find the maximum volume of such a box.
+\end{example}
+\begin{proof} Let $x,y$ be the measurements of the two sides on the bottom, and $z$ be the height of the box. Here the volume is 
+\begin{equation*}
+    f(x,y,z) = xyz,    
+\end{equation*}
+and the area of the box without the lid is $xy + 2xz + 2yz = 12$, thus the constraint is
+\begin{equation*}
+    g(x,y,z) = xy + 2xz + 2yz -12 = 0.
+\end{equation*}
+The system is
+\begin{equation*}
+\begin{cases}
+    \nabla f(x,y,z) = \lambda \nabla g(x,y,z)\\
+    g(x,y,z) = 0
+\end{cases}
+     \qquad \Longrightarrow\qquad  
+     \begin{cases}
+         (yz, xz, xy) =\lambda (y+2z, x+2z, 2x+2y)\\
+         xy + 2xz + 2yz = 12.
+     \end{cases}
+\end{equation*}
+Therefore
+\begin{equation*}
+    \begin{cases}
+    \begin{aligned}
+        yz &= \lambda(y+2z)\\
+        xz &= \lambda(x+2z)\\
+        xy &= \lambda(2x+2y)\\
+        xy + 2xz + 2yz &= 12.
+    \end{aligned}
+    \end{cases}
+\end{equation*}
+If $\lambda = 0$ then $yz=xz=xy = 0$, which does not satisfy $xy + 2xz + 2yz = 12$. We can safely assume $x,y,z\neq 0$ as they are dimensions of the box. Thus by dividing the equations side by side we have 
+\begin{equation*}
+    \begin{cases}
+    \begin{aligned}
+        x\times yz &= x\times \lambda(y+2z)\\
+        y\times xz &= y\times\lambda(x+2z)\\
+        z\times xy &= z\times\lambda(2x+2y)\\
+        xy + 2xz + 2yz &= 12.
+    \end{aligned}
+    \end{cases} \qquad\Longrightarrow\qquad 
+    \begin{cases}
+        \begin{aligned}
+            xyz &= \lambda (xy + 2xz)\\
+            xyz &= \lambda (xy + 2yz)\\
+            xyz &= \lambda (2xz + 2yz)\\
+            xy + 2xz + 2yz &= 12.
+        \end{aligned}
+    \end{cases}
+\end{equation*}
+Therefore, from the 1st and 2nd equation (use $\lambda\neq 0$ and $z\neq 0$)
+\begin{equation*}
+    xy +2xz = xy + 2yz \qquad\Longrightarrow\qquad 2xz=2yz \qquad\Longrightarrow\qquad x=y.
+\end{equation*}
+from the 2nd and 3rd equation (use $\lambda\neq 0$ and $z\neq 0$)
+\begin{equation*}
+    xy +2yz = 2xz + 2yz \qquad\Longrightarrow\qquad xy=2xz \qquad\Longrightarrow\qquad y=2x.
+\end{equation*}
+Therefore 
+\begin{equation*}
+    x = y = 2z.
+\end{equation*}
+Use this 
+\end{proof}

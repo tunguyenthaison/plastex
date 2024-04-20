@@ -116,14 +116,3 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 
-
-
-% making the description with hyperlink
-\usepackage{enumitem}
-\makeatletter
-\def\namedlabel#1#2{\begingroup
-    #2%
-    \def\@currentlabel{#2}%
-    \phantomsection\label{#1}\endgroup
-}
-\makeatother
